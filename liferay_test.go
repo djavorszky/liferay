@@ -112,3 +112,30 @@ func TestMysqlJDBCDXP(t *testing.T) {
 		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.Password, jdbc.Password))
 	}
 }
+
+func TestMSSQLJDBC(t *testing.T) {
+	control := JDBC{
+		Driver:   "jdbc.default.driverClassName=net.sourceforge.jtds.jdbc.Driver",
+		URL:      "jdbc.default.url=jdbc:jtds:sqlserver//192.168.211.88:1433/master",
+		User:     "jdbc.default.username=clouddb",
+		Password: "jdbc.default.password=password",
+	}
+
+	jdbc := MSSQLJDBC("192.168.211.88", "1433", "master", "clouddb", "password")
+
+	if jdbc.Driver != control.Driver {
+		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.Driver, jdbc.Driver))
+	}
+
+	if jdbc.URL != control.URL {
+		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.URL, jdbc.URL))
+	}
+
+	if jdbc.User != control.User {
+		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.User, jdbc.User))
+	}
+
+	if jdbc.Password != control.Password {
+		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.Password, jdbc.Password))
+	}
+}
