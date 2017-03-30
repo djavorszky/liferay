@@ -76,3 +76,18 @@ func MysqlJDBCDXP(address, port, database, user, password string) JDBC {
 		Password: fmt.Sprintf("jdbc.default.password=%s", password),
 	}
 }
+
+// MSSQLJDBC returns a JDBC struct which has values corresponding to those
+// of Liferay's portal.properties entries for connecting the portal to an
+// SQl Server database.
+//
+// Each of its fields corresponds to the full key=value pair from the
+// properties file.
+func MSSQLJDBC(address, port, database, user, password string) JDBC {
+	return JDBC{
+		Driver:   "jdbc.default.driverClassName=net.sourceforge.jtds.jdbc.Driver",
+		URL:      fmt.Sprintf("jdbc.default.url=jdbc:jtds:sqlserver//%s:%s/%s", address, port, database),
+		User:     fmt.Sprintf("jdbc.default.username=%s", user),
+		Password: fmt.Sprintf("jdbc.default.password=%s", password),
+	}
+}
