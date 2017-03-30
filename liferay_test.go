@@ -116,7 +116,7 @@ func TestMysqlJDBCDXP(t *testing.T) {
 func TestMSSQLJDBC(t *testing.T) {
 	control := JDBC{
 		Driver:   "jdbc.default.driverClassName=net.sourceforge.jtds.jdbc.Driver",
-		URL:      "jdbc.default.url=jdbc.default.url=jdbc:jtds:sqlserver//localhost:1433/master",
+		URL:      "jdbc.default.url=jdbc:jtds:sqlserver//192.168.211.88:1433/master",
 		User:     "jdbc.default.username=clouddb",
 		Password: "jdbc.default.password=password",
 	}
