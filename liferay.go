@@ -54,7 +54,7 @@ func PostgreJDBC(address, port, database, user, password string) JDBC {
 func MysqlJDBC(address, port, database, user, password string) JDBC {
 	return JDBC{
 		Driver:   "jdbc.default.driverClassName=com.mysql.jdbc.Driver",
-		URL:      fmt.Sprintf("jdbc.default.url=jdbc:mysql://%s:%s/%s?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false", address, port, database),
+		URL:      fmt.Sprintf("jdbc.default.url=jdbc:mysql://%s:%s/%s?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false&useSSL=false", address, port, database),
 		User:     fmt.Sprintf("jdbc.default.username=%s", user),
 		Password: fmt.Sprintf("jdbc.default.password=%s", password),
 	}
@@ -71,7 +71,7 @@ func MysqlJDBC(address, port, database, user, password string) JDBC {
 func MysqlJDBCDXP(address, port, database, user, password string) JDBC {
 	return JDBC{
 		Driver:   "jdbc.default.driverClassName=com.mysql.jdbc.Driver",
-		URL:      fmt.Sprintf("jdbc.default.url=jdbc:mysql://%s:%s/%s?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&useFastDateParsing=false&useUnicode=true", address, port, database),
+		URL:      fmt.Sprintf("jdbc.default.url=jdbc:mysql://%s:%s/%s?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&useFastDateParsing=false&useUnicode=true&useSSL=false", address, port, database),
 		User:     fmt.Sprintf("jdbc.default.username=%s", user),
 		Password: fmt.Sprintf("jdbc.default.password=%s", password),
 	}
