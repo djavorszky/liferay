@@ -60,6 +60,21 @@ func MysqlJDBC(address, port, database, user, password string) JDBC {
 	}
 }
 
+// MariaDBJDBC returns a JDBC struct which has values corresponding to that
+// of Liferay's portal.properties entry for connecting the portal to a
+// MariaDB database.
+//
+// Each of its fields corresponds to the full key=value pair from the
+// properties file.
+func MariaDBJDBC(address, port, database, user, password string) JDBC {
+	return JDBC{
+		Driver:   "jdbc.default.driverClassName=org.mariadb.jdbc.Driver",
+		URL:      fmt.Sprintf("jdbc.default.url=jdbc:mariadb://%s:%s/%s?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false&useSSL=false", address, port, database),
+		User:     fmt.Sprintf("jdbc.default.username=%s", user),
+		Password: fmt.Sprintf("jdbc.default.password=%s", password),
+	}
+}
+
 // MysqlJDBCDXP returns a JDBC struct which has values corresponding to that
 // of Liferay's portal.properties entry for connecting the portal to a
 // Mysql database.
