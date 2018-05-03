@@ -13,7 +13,7 @@ func TestOracleJDBC(t *testing.T) {
 		Password: "jdbc.default.password=password",
 	}
 
-	jdbc := OracleJDBC("192.168.211.88", "1521", "orcl", "system", "password")
+	jdbc := OracleJDBC("192.168.211.88:1521", "orcl", "system", "password")
 
 	if jdbc.Driver != control.Driver {
 		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.Driver, jdbc.Driver))
@@ -40,7 +40,7 @@ func TestPostgresJDBC(t *testing.T) {
 		Password: "jdbc.default.password=password",
 	}
 
-	jdbc := PostgreJDBC("192.168.211.88", "5432", "lportal", "system", "password")
+	jdbc := PostgreJDBC("192.168.211.88:5432", "lportal", "system", "password")
 
 	if jdbc.Driver != control.Driver {
 		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.Driver, jdbc.Driver))
@@ -62,12 +62,12 @@ func TestPostgresJDBC(t *testing.T) {
 func TestMysqlJDBC(t *testing.T) {
 	control := JDBC{
 		Driver:   "jdbc.default.driverClassName=com.mysql.jdbc.Driver",
-		URL:      "jdbc.default.url=jdbc:mysql://192.168.211.88:3306/lportal?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false",
+		URL:      "jdbc.default.url=jdbc:mysql://192.168.211.88:3306/lportal?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false&useSSL=false",
 		User:     "jdbc.default.username=root",
 		Password: "jdbc.default.password=password",
 	}
 
-	jdbc := MysqlJDBC("192.168.211.88", "3306", "lportal", "root", "password")
+	jdbc := MysqlJDBC("192.168.211.88:3306", "lportal", "root", "password")
 
 	if jdbc.Driver != control.Driver {
 		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.Driver, jdbc.Driver))
@@ -89,12 +89,12 @@ func TestMysqlJDBC(t *testing.T) {
 func TestMysqlJDBCDXP(t *testing.T) {
 	control := JDBC{
 		Driver:   "jdbc.default.driverClassName=com.mysql.jdbc.Driver",
-		URL:      "jdbc.default.url=jdbc:mysql://192.168.211.88:3306/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&useFastDateParsing=false&useUnicode=true",
+		URL:      "jdbc.default.url=jdbc:mysql://192.168.211.88:3306/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&useFastDateParsing=false&useUnicode=true&useSSL=false",
 		User:     "jdbc.default.username=root",
 		Password: "jdbc.default.password=password",
 	}
 
-	jdbc := MysqlJDBCDXP("192.168.211.88", "3306", "lportal", "root", "password")
+	jdbc := MysqlJDBCDXP("192.168.211.88:3306", "lportal", "root", "password")
 
 	if jdbc.Driver != control.Driver {
 		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.Driver, jdbc.Driver))
@@ -121,7 +121,7 @@ func TestMSSQLJDBC(t *testing.T) {
 		Password: "jdbc.default.password=password",
 	}
 
-	jdbc := MSSQLJDBC("192.168.211.88", "1433", "master", "clouddb", "password")
+	jdbc := MSSQLJDBC("192.168.211.88:1433", "master", "clouddb", "password")
 
 	if jdbc.Driver != control.Driver {
 		t.Errorf(fmt.Sprintf("Mismatch: Expected %q, got %q", control.Driver, jdbc.Driver))
