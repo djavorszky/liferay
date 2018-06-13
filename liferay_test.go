@@ -7,7 +7,7 @@ import (
 
 func TestOracleJDBC(t *testing.T) {
 	control := JDBC{
-		Driver:   "jdbc.default.driverClassName=oracle.jdbc.driver.OracleDriver",
+		Driver:   "jdbc.default.driverClassName=oracle.jdbc.OracleDriver",
 		URL:      "jdbc.default.url=jdbc:oracle:thin:@192.168.211.88:1521:orcl",
 		User:     "jdbc.default.username=system",
 		Password: "jdbc.default.password=password",
